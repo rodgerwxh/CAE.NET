@@ -1,0 +1,185 @@
+% Header:				Project Name
+% Date\Time:			2016-06-28\12:30:56
+% Problem Type: 		Forward/Backward
+% Physics: 				EM/EL
+% Solver Type: 			FDTD/FETD/SETD
+% Coordinate System: 	Cartesian/Cylindrical
+% Length Unit:			meter
+% Time Unit:			second
+% Frequency Unit:		hertz		
+
+Mesh
+{
+	C:\Test\MeshCube.txt    % Full path of the mesh file name
+}
+
+Simulation
+{
+    Time 
+	{
+        Time Step:		5e-12
+        Time Window:	5e-9
+    }
+}
+
+Physical Entities
+{
+	Background
+	{
+        OprType:		Interface
+		GeoType:		Volume
+		PhyType:		Normal/Conductive/Dispersive/Anisotropic/Inhomogeneous/Superconductive/Ferromagnetic/Customized
+		Ranking:		1
+		Entity Parameters:
+		{
+			EM Properties
+			{
+				epsilon_r:		1.0
+				mu_r:			1.0
+				sigma:			0.001
+				loss tangent:	
+				{
+					freq:		1
+					value:		0.001
+				}
+				Dispersion
+				{
+					
+				}
+				
+				Inhomogenity:		C:\Test\VoxelData.txt     % Voxel
+			}	
+			EL Properties
+			{
+				vp:		
+				vs:
+				qp:	
+				qs:
+				elastic modulus
+				{
+					6 x 6 Cij matrix
+				}
+				Inhomogenity:		C:\Test\VoxelData.txt     % Voxel
+			}
+		}
+	}
+	
+	InitialConditions
+	{
+		OprType:		Interface
+		GeoType:		Volume 
+		PhyType:		E-Initial/H-Initial/Stress-Initial/Particle-Velocity-Initial
+		Ranking:		2
+		Entity Parameters:
+		{
+			% Can be defined with flexibility
+		}
+	}
+	
+	
+	BoundaryConditions
+	{
+		OprType:		Interface
+		GeoType:		Surface 
+		PhyType:		E-Dirlchlet/H-Dirlchlet/E-Neumann/H-Neumann/ABC/PML/Interface/Symmetric/Anti-Symmetric/Periodic/Floquet/Hard/Soft
+		Ranking:		2
+		Entity Parameters:
+		{
+			% Can be defined with flexibility
+		}
+	}
+	
+	Mat1
+	% Material is a reactor, covering volumetric material block, impedance surface, thin-wire, dispersion, anisotropic and voxel
+	{
+        OprType:		Interface
+		GeoType:		Volume/Surface/Line/Point
+		PhyType:		Normal/Conductive/Dispersive/Anisotropic/Inhomogeneous/Superconductive/Ferromagnetic/Customized/Circuit
+		Ranking:		1
+		Entity Parameters:
+		{
+			% Can be defined with flexibility
+		}
+	}
+	
+	IncomingWaves
+	% Excitations from outside
+	{
+		OprType:		Input
+		GeoType:		Surface 
+		PhyType:		Planewave/Beam/NearFieldIngestion
+		Ranking:		3
+		Entity Parameters:
+		{
+			% Can be defined with flexibility
+		}
+	}
+	
+	PointSources
+	{
+		OprType:		Input
+		GeoType:		Point 
+		PhyType:		E-Dipole/M-Dipole/E-Monopole/M-Monopole/E-Quadrupole/M-Quadrupole/Circuit/Tensor-Moment
+		Ranking:		3
+		Entity Parameters:
+		{
+			% Can be defined with flexibility
+			Signal:		C:\Test\SourceSignal.txt
+			Type:		Hard/Soft
+		}
+	}
+	
+	LineSources
+	{
+		OprType:		Input
+		GeoType:		Line 
+		PhyType:		E/H
+		Ranking:		3
+		Entity Parameters:
+		{
+			% Can be defined with flexibility
+			Pattern:	Constant/Sine/Customized
+		}
+	}
+	
+	waveport
+	{
+		OprType:		Input
+		GeoType:		Surface/Volume
+		PhyType:		E/H
+		Ranking:		3
+		Entity Parameters:
+		{
+			% Can be defined with flexibility
+			Pattern:	Constant/Sine/Customized
+		}
+	}
+	
+	Probe
+	{
+		OprType:		Output
+		GeoType:		Point 
+		PhyType:		XYZ/Projected
+		Ranking:		3
+		Entity Parameters:
+		{
+			% Can be defined with flexibility
+		}
+	}
+	
+	Snapshots
+	{
+		OprType:		Output
+		GeoType:		Line/Surface/Volume 
+		PhyType:		XYZ/Tangential/Normal/Projected
+		Ranking:		3
+		Entity Parameters:
+		{
+			% Can be defined with flexibility
+		}
+	}
+}
+
+
+
+

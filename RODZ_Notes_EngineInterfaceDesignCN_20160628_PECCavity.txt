@@ -1,0 +1,71 @@
+% Header:				Project Name
+% Date:					2016-06-28
+% Problem Type: 		Forward
+% Physics: 				EM
+% Solver Type: 			FDTD
+% Coordinate System: 	Cartesian
+% Length Unit:			meter
+% Time Unit:			second
+% Frequency Unit:		Hertz		
+
+Mesh
+{
+	C:\Test\Cube.txt    
+}
+
+Simulation
+{
+    Time 
+	{
+        Time Step:		5e-12
+        Time Window:	5e-9
+    }
+}
+
+Physical Entities
+{
+	Boundary
+	{
+		OprType:		Interface
+		GeoType:		Surface 
+		PhyType:		PEC
+		Ranking:		2
+	}
+	
+	Background
+	{
+        OprType:		Interface
+		GeoType:		Volume
+		EntityType:		Normal
+		Ranking:		0
+		EM Properties
+		{
+			epsilon_r:		1.0
+			mu_r:			1.0
+			sigma:			0.0001
+		}	
+	}
+		
+	Source
+	{
+		OprType:		Input
+		GeoType:		Point
+		PhyType:		E-Dipole
+		Ranking:		3
+		Signal:			C:\Test\SourceSignal.txt
+		Polarization: 	(1, 0, 0)
+	}
+	
+	H-Probe
+	{
+		OprType:		Output
+		GeoType:		Point
+		EntityType:		E
+		Ranking:		5
+		Component:		X, Y, Z
+	}
+}
+
+
+
+
