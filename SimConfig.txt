@@ -1,25 +1,35 @@
 % Header:				Project Name
-% Date\Time:			2016-06-28\12:30:56
+% Date: 				2016-06-28
+% Time:					12:30:56
 % Problem Type: 		Forward/Backward
-% Physics: 				EM/EL
-% Solver Type: 			FDTD/FETD/SETD
-% Coordinate System: 	Cartesian/Cylindrical
+% Physics: 				Electromagnetics/Elastodynamics/Thermal/Fluid
+% Solver Type: 			Forward/Backward
+%						DE/IE
+%						Static/Harmonic-Low/Harmonic-Mid/Harmonic-High/Transient-Explicit/Transient-Implicit
+%						FD/FE/SE/FV
+% Coordinate System: 	Cartesian/Cylindrical/Spherical
 % Length Unit:			meter
 % Time Unit:			second
 % Frequency Unit:		hertz		
 
 Mesh
 {
-	C:\Test\MeshCube.txt    % Full path of the mesh file name
+	C:\Test\Mesh.txt    % Full path of the mesh data and file name
+	../Mesh.txt			% Relative path of the mesh data and file name
 }
 
 Simulation
 {
-    Time 
+	Transient 
 	{
-        Time Step:		5e-12
-        Time Window:	5e-9
-    }
+		Time Step:		5e-12	
+		Time Window:	5e-9
+	}
+	Frequencies
+	{
+		Points:			0.7e9, 1.4e9, 2.8e9, 3.5e9
+		Sweep:			0.5e9, 4e9, 0.1e9
+	}
 }
 
 Physical Entities
@@ -36,25 +46,23 @@ Physical Entities
 			{
 				epsilon_r:		1.0
 				mu_r:			1.0
-				sigma:			0.001
+				sigma:			0.001 + 4.0j
 				loss tangent:	
 				{
 					freq:		1
 					value:		0.001
 				}
-				Dispersion
-				{
-					
-				}
-				
-				Inhomogenity:		C:\Test\VoxelData.txt     % Voxel
+				Dispersion:		C:\Test\DispersionData.txt			% For time domain, provide Drude/Lorentz/Debye pole coefficient. 
+																	% For frequency domain, directly provid dispersion function data.
+				Inhomogenity:	C:\Test\VoxelData.txt     			% Voxel
 			}	
 			EL Properties
 			{
-				vp:		
-				vs:
-				qp:	
-				qs:
+				mass density:	2300
+				vp:				6780
+				vs:				800
+				qp:				20
+				qs:				15
 				elastic modulus
 				{
 					6 x 6 Cij matrix
@@ -66,7 +74,7 @@ Physical Entities
 	
 	InitialConditions
 	{
-		OprType:		Interface
+		OprType:		Input
 		GeoType:		Volume 
 		PhyType:		E-Initial/H-Initial/Stress-Initial/Particle-Velocity-Initial
 		Ranking:		2
@@ -171,7 +179,7 @@ Physical Entities
 	{
 		OprType:		Output
 		GeoType:		Line/Surface/Volume 
-		PhyType:		XYZ/Tangential/Normal/Projected
+		PhyType:		XYZ/Tangential/Normal/Projected/Integration
 		Ranking:		3
 		Entity Parameters:
 		{
