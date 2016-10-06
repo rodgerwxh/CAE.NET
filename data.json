@@ -1,0 +1,35 @@
+{
+    "Header":{
+        "Coordinate System":"Cartesian",
+        "Date":"03/10/2016",
+        "Physics":"Electromagnetics",
+        "Project Name":"ProjectName",
+        "Solver Type":[
+            "Forward",
+            "DE",
+            "Transient-Explicit",
+            "FD"
+        ],
+        "Time":"22:40:23",
+        "Unit":{
+            "Length Unit":"meter",
+            "Time Unit":"second"
+        }
+    },
+    "Physics Entities":{
+        "Background":{
+            "Attribute":{
+                "GeoType":"Volume",
+                "OprType":"Interface",
+                "PhyType":"Material"
+            }
+        }
+    },
+    "Simulation":{
+        "Mesh Data":"C:/Test/Mesh.txt",
+        "Time Control":{
+            "Time Step":5e-12,
+            "Time Window":5e-09
+        }
+    }
+}
