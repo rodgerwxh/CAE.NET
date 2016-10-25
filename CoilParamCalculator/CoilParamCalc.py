@@ -140,7 +140,7 @@ class MainWindow(QtW.QWidget):
         self.e28 = QtW.QLineEdit()
         self.e22.setValidator(QtGui.QDoubleValidator(1e-20,1e20,16))
         self.e28.setStyleSheet(inputStyle)
-        coilMatchingComponentsLayout.addRow("Mutual Inductance L12 (H)", self.e28)
+        coilMatchingComponentsLayout.addRow("Coupling Factor K", self.e28)
         
         
         self.o21 = QtW.QLineEdit("...")
@@ -172,6 +172,12 @@ class MainWindow(QtW.QWidget):
         self.o26.setReadOnly(True)
         self.o26.setStyleSheet(outputStyle)
         coilMatchingComponentsLayout.addRow("Load Series Capacitance CL (F)",self.o26)
+        
+        self.o27 = QtW.QLineEdit("...")
+        self.o27.setReadOnly(True)
+        self.o27.setStyleSheet(outputStyle)
+        coilMatchingComponentsLayout.addRow("Mutual Inductance L12 (H)",self.o27)
+        
         
         self.b21 = QtW.QPushButton("Calculate")
         self.b21.clicked.connect(self.calcCoilMatching)
@@ -329,7 +335,8 @@ class MainWindow(QtW.QWidget):
             R2 = float (self.e25.text())
             L2 = float (self.e26.text())
             R12 = float (self.e27.text())
-            L12 = float (self.e28.text())
+            K = float (self.e28.text())
+            L12 = m.sqrt(L1*L2)*K
             
             if RL <= R2:
                 msgBox = QtW.QMessageBox()
@@ -372,6 +379,7 @@ class MainWindow(QtW.QWidget):
                     self.o24.setText(str('{:.6g}'.format(CS)))
                     self.o25.setText(str('{:.6g}'.format(LL)))
                     self.o26.setText(str('{:.6g}'.format(CL)))
+                    self.o27.setText(str('{:.6g}'.format(L12)))
                     
                     self.e32.setText(str('{:.6g}'.format(LS)))
                     self.e33.setText(str('{:.6g}'.format(CS)))
