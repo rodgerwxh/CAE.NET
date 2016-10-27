@@ -406,7 +406,8 @@ class MainWindow(QtW.QWidget):
             R2 = float (self.e25.text())
             L2 = float (self.e26.text())
             R12 = float (self.e27.text())
-            L12 = float (self.e28.text())
+            K = float (self.e28.text())
+            L12 = m.sqrt(L1*L2)*K
             
             if RL <= R2:
                 msgBox = QtW.QMessageBox()
