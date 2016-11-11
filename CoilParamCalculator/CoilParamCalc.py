@@ -2,7 +2,7 @@
 """
 Created on Tue Oct 11 10:18:29 2016
 
-@author: rf2antennallc
+@author: Rodger Zhao
 """
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
