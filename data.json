@@ -45,7 +45,7 @@
     },
     "Header":{
         "Coordinate System":"Cartesian",
-        "Date":"06/10/2016",
+        "Date":"17/10/2016",
         "Physics":"Electromagnetics",
         "Project Name":"ProjectName",
         "Solver Type":[
@@ -54,7 +54,7 @@
             "Harmonics-Mid",
             "FE"
         ],
-        "Time":"21:56:27",
+        "Time":"23:10:37",
         "Unit":{
             "Frequency":"hertz",
             "Length":"meter",

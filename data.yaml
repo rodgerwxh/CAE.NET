@@ -17,11 +17,11 @@ Data Set:
   Mesh Data: C:/Test/Mesh.txt
 Header:
   Coordinate System: Cartesian
-  Date: 06/10/2016
+  Date: 17/10/2016
   Physics: Electromagnetics
   Project Name: ProjectName
   Solver Type: [Forward, DE, Harmonics-Mid, FE]
-  Time: '21:56:27'
+  Time: '23:10:37'
   Unit: {Frequency: hertz, Length: meter, Time: second}
 Physics Entities:
   Background: {DataLink: Air, GeoType: Volume, OprType: Interface, PhyType: Material,

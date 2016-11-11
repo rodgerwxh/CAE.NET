@@ -17,7 +17,7 @@ data = \
         'Date': time.strftime("%d/%m/%Y"), \
         'Time': time.strftime("%H:%M:%S"), \
 		'Physics': 'Electromagnetics', \
-		'Solver Type': ['Forward','DE','Harmonics-Mid','FE'], \
+		'Solver Type': ['Forward','DE','Transient-Explicit','FD'], \
 		'Coordinate System': 'Cartesian', \
 		'Unit': \
 		{ \
@@ -29,16 +29,20 @@ data = \
                 
     'Simulation': \
 	{ \
-        'Frequency Control': \
+        'Time Control': \
 		{ \
-			'Points': [0.7e9, 1.4e9, 2.1e9, 2.8e9], \
-            'Sweep': [0.5e9, 4e9, 0.1e9] \
-		} \
+			'Time Window': 100e-9, \
+            'Time Step': 1e-12 \
+		}, \
+		'Initial Condition': \
+		{ \
+			'Initial Values': 'C:\Test\IC.init', \
+		}, \
 	},\
 	
 	'Data Set': \
 	{ \
-        'Geometry Data': "C:/Test/layout.gds", \
+        'Geometry Data': "C:/Test/geo.stl", \
         'Material': \
 		{\
 			'Air':\
