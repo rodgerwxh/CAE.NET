@@ -2,7 +2,7 @@
 """
 Created on Tue Oct 11 10:18:29 2016
 
-@author: rf2antennallc
+@author: Rodger Zhao
 """
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
@@ -13,12 +13,9 @@ import PyQt5.QtGui as QtGui
 import PyQt5.QtWidgets as QtW
 
 class MainWindow(QtW.QWidget):
-<<<<<<< HEAD
-=======
     
     cr1 = 0
     cr2 = 0
->>>>>>> refs/remotes/origin/master
 
     def __init__(self):
         
@@ -47,8 +44,6 @@ class MainWindow(QtW.QWidget):
         ##############################################
         
         coilParametersLayout = QtW.QFormLayout()
-<<<<<<< HEAD
-=======
         
         self.e10 = QtW.QComboBox()
         self.e10.addItem("Tx", "Tx");
@@ -56,15 +51,12 @@ class MainWindow(QtW.QWidget):
         self.e10.setCurrentIndex(self.e10.findData("Tx"));
         self.e10.setStyleSheet(inputStyle)
         coilParametersLayout.addRow("Coil Type (Tx or Rx)", self.e10)
->>>>>>> refs/remotes/origin/master
 
         self.e11 = QtW.QLineEdit()
         self.e11.setValidator(QtGui.QDoubleValidator(1e-6,1e6,16))
         self.e11.setStyleSheet(inputStyle)
         coilParametersLayout.addRow("Coil Diameter (m)", self.e11)
         
-<<<<<<< HEAD
-=======
 #        self.e17 = QtW.QLineEdit()
 #        self.e17.setValidator(QtGui.QDoubleValidator(1e-6,1e6,16))
 #        self.e17.setStyleSheet(inputStyle)
@@ -75,7 +67,6 @@ class MainWindow(QtW.QWidget):
         self.e16.setStyleSheet(inputStyle)
         coilParametersLayout.addRow("Coil Relative Permeability (mur)", self.e16)
         
->>>>>>> refs/remotes/origin/master
         self.e12 = QtW.QLineEdit()
         self.e12.setValidator(QtGui.QDoubleValidator(1e-20,1e6,16))
         self.e12.setStyleSheet(inputStyle)
@@ -94,16 +85,12 @@ class MainWindow(QtW.QWidget):
         self.e14 = QtW.QLineEdit()
         self.e14.setValidator(QtGui.QDoubleValidator(1e-20,1e6,16))
         self.e14.setStyleSheet(inputStyle)
-<<<<<<< HEAD
-        coilParametersLayout.addRow("Winding Height (m)", self.e14)
-=======
         coilParametersLayout.addRow("Winding Length (m)", self.e14)
         
 #        self.e18 = QtW.QLineEdit()
 #        self.e18.setValidator(QtGui.QDoubleValidator(1e-6,1e6,16))
 #        self.e18.setStyleSheet(inputStyle)
 #        coilParametersLayout.addRow("Winding to Coil Offset (m)", self.e18)
->>>>>>> refs/remotes/origin/master
 
         self.o11 = QtW.QLineEdit("...")
         self.o11.setReadOnly(True)
@@ -151,60 +138,34 @@ class MainWindow(QtW.QWidget):
         coilMatchingComponentsLayout.addRow("Load Resistance RL (Ohm)", self.e22)
         
         self.e23 = QtW.QLineEdit()
-<<<<<<< HEAD
-        self.e22.setValidator(QtGui.QDoubleValidator(1e-20,1e20,16))
-=======
         self.e23.setValidator(QtGui.QDoubleValidator(1e-20,1e20,16))
->>>>>>> refs/remotes/origin/master
         self.e23.setStyleSheet(inputStyle)
         coilMatchingComponentsLayout.addRow("Tx Resistance R1 (Ohm)", self.e23)
         
         self.e24 = QtW.QLineEdit()
-<<<<<<< HEAD
-        self.e22.setValidator(QtGui.QDoubleValidator(1e-20,1e20,16))
-=======
         self.e23.setValidator(QtGui.QDoubleValidator(1e-20,1e20,16))
->>>>>>> refs/remotes/origin/master
         self.e24.setStyleSheet(inputStyle)
         coilMatchingComponentsLayout.addRow("Tx Inductance L1 (H)", self.e24)
         
         self.e25 = QtW.QLineEdit()
-<<<<<<< HEAD
-        self.e22.setValidator(QtGui.QDoubleValidator(1e-20,1e20,16))
-=======
         self.e25.setValidator(QtGui.QDoubleValidator(1e-20,1e20,16))
->>>>>>> refs/remotes/origin/master
         self.e25.setStyleSheet(inputStyle)
         coilMatchingComponentsLayout.addRow("Rx Resistance R2 (Ohm)", self.e25)
         
         self.e26 = QtW.QLineEdit()
-<<<<<<< HEAD
-        self.e22.setValidator(QtGui.QDoubleValidator(1e-20,1e20,16))
-=======
         self.e26.setValidator(QtGui.QDoubleValidator(1e-20,1e20,16))
->>>>>>> refs/remotes/origin/master
         self.e26.setStyleSheet(inputStyle)
         coilMatchingComponentsLayout.addRow("Rx Inductance L2 (H)", self.e26)
         
         self.e27 = QtW.QLineEdit()
-<<<<<<< HEAD
-        self.e22.setValidator(QtGui.QDoubleValidator(1e-20,1e20,16))
-=======
         self.e27.setValidator(QtGui.QDoubleValidator(1e-20,1e20,16))
->>>>>>> refs/remotes/origin/master
         self.e27.setStyleSheet(inputStyle)
         coilMatchingComponentsLayout.addRow("Mutual Resistance R12 (Ohm)", self.e27)
         
         self.e28 = QtW.QLineEdit()
-<<<<<<< HEAD
-        self.e22.setValidator(QtGui.QDoubleValidator(1e-20,1e20,16))
-        self.e28.setStyleSheet(inputStyle)
-        coilMatchingComponentsLayout.addRow("Mutual Inductance L12 (H)", self.e28)
-=======
         self.e28.setValidator(QtGui.QDoubleValidator(1e-20,1e20,16))
         self.e28.setStyleSheet(inputStyle)
         coilMatchingComponentsLayout.addRow("Coupling Factor K", self.e28)
->>>>>>> refs/remotes/origin/master
         
         
         self.o21 = QtW.QLineEdit("...")
@@ -237,15 +198,12 @@ class MainWindow(QtW.QWidget):
         self.o26.setStyleSheet(outputStyle)
         coilMatchingComponentsLayout.addRow("Load Series Capacitance CL (F)",self.o26)
         
-<<<<<<< HEAD
-=======
         self.o27 = QtW.QLineEdit("...")
         self.o27.setReadOnly(True)
         self.o27.setStyleSheet(outputStyle)
         coilMatchingComponentsLayout.addRow("Mutual Inductance L12 (H)",self.o27)
         
         
->>>>>>> refs/remotes/origin/master
         self.b21 = QtW.QPushButton("Calculate")
         self.b21.clicked.connect(self.calcCoilMatching)
         coilMatchingComponentsLayout.addRow(self.b21)
@@ -316,8 +274,6 @@ class MainWindow(QtW.QWidget):
         self.o37.setStyleSheet(outputStyle)
         coilEfficiencyLayout.addRow("Power Transfer Efficiency (%)",self.o37)
         
-<<<<<<< HEAD
-=======
         self.o38 = QtW.QLineEdit("...")
         self.o38.setReadOnly(True)
         self.o38.setStyleSheet(outputStyle)
@@ -328,7 +284,6 @@ class MainWindow(QtW.QWidget):
         self.o39.setStyleSheet(outputStyle)
         coilEfficiencyLayout.addRow("Input Impedance Im(Z) (Ohm)",self.o39)
         
->>>>>>> refs/remotes/origin/master
         self.b31 = QtW.QPushButton("Calculate")
         self.b31.clicked.connect(self.calcCoilEfficiency)
         coilEfficiencyLayout.addRow(self.b31)
@@ -345,11 +300,7 @@ class MainWindow(QtW.QWidget):
         layout.setSizeConstraint(QtW.QLayout.SetFixedSize)
         self.setLayout(layout)
         
-<<<<<<< HEAD
-        self.setWindowTitle("Low Frequency Cylindrical Coil Parameters Calculator")
-=======
         self.setWindowTitle("Cylindrical Coil Parameters Calculator")
->>>>>>> refs/remotes/origin/master
 
         self.show()
 
@@ -361,12 +312,6 @@ class MainWindow(QtW.QWidget):
             # Get the inputs            
             freq = float (self.e01.text())            
             coil_diameter = float (self.e11.text())
-<<<<<<< HEAD
-            wire_diameter = float (self.e12.text())
-            wire_conductivity = float (self.e15.text())
-            winding_num_turns = int (self.e13.text())
-            winding_height = float (self.e14.text())     
-=======
 #            coil_length = float (self.e17.text())
             coil_mur = float (self.e16.text())
             wire_diameter = float (self.e12.text())
@@ -374,17 +319,12 @@ class MainWindow(QtW.QWidget):
             winding_num_turns = int (self.e13.text())
             winding_length = float (self.e14.text())     
 #            winding_offset = float (self.e18.text())    
->>>>>>> refs/remotes/origin/master
             
             # Calculate wire cross section area
             wire_crossSection_area = m.pi*m.pow(wire_diameter/2,2)
             
             # Calculate winding thickness
-<<<<<<< HEAD
-            winding_num_turns_per_layer = winding_height / wire_diameter
-=======
             winding_num_turns_per_layer = winding_length / wire_diameter
->>>>>>> refs/remotes/origin/master
             winding_num_layers = winding_num_turns / winding_num_turns_per_layer
             
             wire_length = 0.0
@@ -393,11 +333,7 @@ class MainWindow(QtW.QWidget):
             wire_length = wire_length + m.pi*(coil_diameter+wire_diameter+2*int(winding_num_layers)*wire_diameter*m.cos(30/180*m.pi))*winding_num_turns_per_layer*(winding_num_layers-int(winding_num_layers))
               
             winding_volume = wire_crossSection_area*wire_length    
-<<<<<<< HEAD
-            winding_thickness = m.sqrt((winding_volume/winding_height + m.pi*m.pow(coil_diameter/2,2))/m.pi)-coil_diameter/2
-=======
             winding_thickness = m.sqrt((winding_volume/winding_length + m.pi*m.pow(coil_diameter/2,2))/m.pi)-coil_diameter/2
->>>>>>> refs/remotes/origin/master
             
             # Calculate skin depth
             wire_skin_depth = m.sqrt ( 1 / (m.pi*freq*wire_conductivity*4*m.pi*1e-7) )
@@ -412,11 +348,7 @@ class MainWindow(QtW.QWidget):
 
             # Calculate winding effective bulk conductivity
             winding_eff_bulk_sigma = wire_length / winding_AC_resistance / wire_crossSection_area
-<<<<<<< HEAD
-            
-=======
                        
->>>>>>> refs/remotes/origin/master
             # Display results
             self.o11.setText(str('{:.6g}'.format(wire_crossSection_area)))
             self.o12.setText(str('{:.6g}'.format(wire_length)))
@@ -424,8 +356,6 @@ class MainWindow(QtW.QWidget):
             self.o14.setText(str('{:.6g}'.format(winding_AC_resistance)))
             self.o15.setText(str('{:.6g}'.format(winding_eff_bulk_sigma)))
             
-<<<<<<< HEAD
-=======
             if self.e10.currentData() == "Tx":
                 winding_inductance = (1+winding_num_turns)*winding_num_turns/2*coil_diameter/2*4*m.pi*1e-7*(m.log(8*coil_diameter/2/(wire_diameter/2)-2))
                 self.e23.setText(str('{:.6g}'.format(winding_AC_resistance)))
@@ -457,7 +387,6 @@ class MainWindow(QtW.QWidget):
                 self.e28.setText(str('{:.6g}'.format(self.cr2*self.cr2/self.cr1/self.cr1*m.sqrt(coil_mur))))
                 
             
->>>>>>> refs/remotes/origin/master
         else:
             msgBox = QtW.QMessageBox()
             msgBox.setWindowTitle("Error !")
@@ -475,12 +404,8 @@ class MainWindow(QtW.QWidget):
             R2 = float (self.e25.text())
             L2 = float (self.e26.text())
             R12 = float (self.e27.text())
-<<<<<<< HEAD
-            L12 = float (self.e28.text())
-=======
             K = float (self.e28.text())
             L12 = m.sqrt(L1*L2)*K
->>>>>>> refs/remotes/origin/master
             
             if RL <= R2:
                 msgBox = QtW.QMessageBox()
@@ -510,11 +435,7 @@ class MainWindow(QtW.QWidget):
                 if RS <= R1p or R1p < R1:
                     msgBox = QtW.QMessageBox()
                     msgBox.setWindowTitle("Error !")
-<<<<<<< HEAD
-                    msg = "Converted input resistance (R1 prime) is invalid " + str('{:.6g}'.format(R1p)) + " !"
-=======
                     msg = "Converted input resistance (Z1 prime) is invalid " + str('{:.6g}'.format(R1p)) + "+" + str('{:.6g}'.format(L1p * w)) + "j !"
->>>>>>> refs/remotes/origin/master
                     msgBox.critical (msgBox,"Error", msg)
                 else:
                     LS = RS/w*m.sqrt(R1p/(RS-R1p))            
@@ -527,10 +448,7 @@ class MainWindow(QtW.QWidget):
                     self.o24.setText(str('{:.6g}'.format(CS)))
                     self.o25.setText(str('{:.6g}'.format(LL)))
                     self.o26.setText(str('{:.6g}'.format(CL)))
-<<<<<<< HEAD
-=======
                     self.o27.setText(str('{:.6g}'.format(L12)))
->>>>>>> refs/remotes/origin/master
                     
                     self.e32.setText(str('{:.6g}'.format(LS)))
                     self.e33.setText(str('{:.6g}'.format(CS)))
@@ -557,12 +475,8 @@ class MainWindow(QtW.QWidget):
             R2 = float (self.e25.text())
             L2 = float (self.e26.text())
             R12 = float (self.e27.text())
-<<<<<<< HEAD
-            L12 = float (self.e28.text())
-=======
             K = float (self.e28.text())
             L12 = m.sqrt(L1*L2)*K
->>>>>>> refs/remotes/origin/master
             
             if RL <= R2:
                 msgBox = QtW.QMessageBox()
@@ -631,11 +545,8 @@ class MainWindow(QtW.QWidget):
                     self.o35.setText(str('{:.6g}'.format(Pin)))
                     self.o36.setText(str('{:.6g}'.format(Pout)))
                     self.o37.setText(str('{:.3f}'.format(Eff)))
-<<<<<<< HEAD
-=======
                     self.o38.setText(str('{:.3f}'.format(Z1.real)))
                     self.o39.setText(str('{:.3f}'.format(Z1.imag)))
->>>>>>> refs/remotes/origin/master
                     
         else:
             msgBox = QtW.QMessageBox()
