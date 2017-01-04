@@ -11,31 +11,7 @@ import time
 
 data = \
 { \
-	'Header': \
-    { \
-        'Project Name': 'ProjectName', \
-        'Date': time.strftime("%d/%m/%Y"), \
-        'Time': time.strftime("%H:%M:%S"), \
-		'Physics': 'Electromagnetics', \
-		'Solver Type': ['Forward','DE','Harmonics-Mid','FE'], \
-		'Coordinate System': 'Cartesian', \
-		'Unit': \
-		{ \
-            'Length': 'meter', \
-            'Time': 'second', \
-            'Frequency': 'hertz' \
-		} \
-    }, \
-                
-    'Simulation': \
-	{ \
-        'Frequency Control': \
-		{ \
-			'Points': [0.7e9, 1.4e9, 2.1e9, 2.8e9], \
-            'Sweep': [0.5e9, 4e9, 0.1e9] \
-		} \
-	},\
-	
+
 	'Data Set': \
 	{ \
         'Geometry Data': "C:/Test/layout.gds", \
@@ -151,43 +127,43 @@ data = \
 }
 
 class Header:
-    prjName
-	date
-	time
-	physics
-	solverType
-	coordSystem
-	unit
-        'Date': time.strftime("%d/%m/%Y"), \
-        'Time': time.strftime("%H:%M:%S"), \
-		'Physics': 'Electromagnetics', \
-		'Solver Type': ['Forward','DE','Harmonics-Mid','FE'], \
-		'Coordinate System': 'Cartesian', \
-		'Unit': \
-		{ \
-            'Length': 'meter', \
-            'Time': 'second', \
-            'Frequency': 'hertz' \
-		} \
-    }, \
-class SimConfig
-	def __init__(self):
-	
-	prjName = "Project Name"
-	date = time.strftime("%d/%m/%Y")
-	time = time.strftime("%H:%M:%S")
-	physics = "Electromagnetics"
-	solverType = ['Forward','DE','Harmonics-Mid','FE']
-	coordSystem = "Cartesian"
-	unit = {"Length":"meter", "Time":"second", "Frequency":"Hz"}
+    prjName = ''
+    date = time.strftime("%d/%m/%Y")
+    time = time.strftime("%H:%M:%S")
+    physics = ''
+    solverType = ''
+    coordSystem = ''
+    unit_length = ''
+    unit_time = ''
+    unit_freq = ''
 
-	def setProjectName (name):
-		self.prjName = name
+    physics_types = [ 'Electromagnetics', 'Elastodynamics', 'Thermal Dynamics', 'Fluid Dynamics']
+    solver_types = ['Forward','DE','Harmonics-Mid','FE']
+    coordsys_types = [ 'Cartesian', 'Cylindrical' ]
+    unit_length_types = [ 'meter' ]
+    unit_time_types = [ 'second' ]
+    unit_freq_types = [ 'hertz' ]
+
+class Simulation:
+    freq_control_points = ''
+    freq_start = ''
+    freq_end = ''
+    freq_step = ''
+    
+class DataSet:
+    
+
+class SimConfig:
+    header = Header()
+
+    def __init__(self):
+        print("Testing")
+
 		
 
-with open('data.json', 'w') as outfile:
-    json.dump(data, outfile, indent=4, sort_keys=True, separators=(',', ':'))
-    
-with open('data.yaml', 'w') as outfile:
-    yaml.dump(data, outfile)
+#with open('data.json', 'w') as outfile:
+#    json.dump(data, outfile, indent=4, sort_keys=True, separators=(',', ':'))
+#    
+#with open('data.yaml', 'w') as outfile:
+#    yaml.dump(data, outfile)
     
