@@ -1,0 +1,124 @@
+{
+    "Data Set":{
+        "Circuit":{
+            "Port1":[
+                "R 0 1 50Ohm",
+                "P1 0 1"
+            ]
+        },
+        "Material":{
+            "Air":{
+                "Conductivity":{
+                    "Constant":0
+                },
+                "Relative Permeability":{
+                    "Constant":1
+                },
+                "Relative Permitivitty":{
+                    "Constant":1
+                }
+            },
+            "FR4":{
+                "Conductivity":{
+                    "Constant":0.001
+                },
+                "Relative Permeability":{
+                    "Constant":1
+                },
+                "Relative Permitivitty":{
+                    "Dispersion":"C:\\eps_r_dispersion.txt"
+                }
+            },
+            "PEC":{
+                "Conductivity":{
+                    "Constant":1e+30
+                },
+                "Relative Permeability":{
+                    "Constant":1
+                },
+                "Relative Permitivitty":{
+                    "Dispersion":1
+                }
+            }
+        },
+        "Mesh Data":"C:/Test/Mesh.txt"
+    },
+    "Header":{
+        "Coordinate System":"Cartesian",
+        "Date":"17/10/2016",
+        "Physics":"Electromagnetics",
+        "Project Name":"ProjectName",
+        "Solver Type":[
+            "Forward",
+            "DE",
+            "Harmonics-Mid",
+            "FE"
+        ],
+        "Time":"23:10:37",
+        "Unit":{
+            "Frequency":"hertz",
+            "Length":"meter",
+            "Time":"second"
+        }
+    },
+    "Physics Entities":{
+        "Background":{
+            "DataLink":"Air",
+            "GeoType":"Volume",
+            "OprType":"Interface",
+            "PhyType":"Material",
+            "Ranking":1
+        },
+        "Ground":{
+            "DataLink":"PEC",
+            "GeoType":"Surface",
+            "OprType":"Interface",
+            "PhyType":"Material",
+            "Ranking":10000
+        },
+        "LP1":{
+            "DataLink":"Port1",
+            "GeoType":"Line",
+            "OprType":"Interface",
+            "PhyType":"Circuit",
+            "Ranking":20000
+        },
+        "LP2":{
+            "DataLink":"Port1",
+            "GeoType":"Surface",
+            "OprType":"Interface",
+            "PhyType":"Circuit",
+            "Ranking":20000
+        },
+        "Substrate":{
+            "DataLink":"FR4",
+            "GeoType":"Volume",
+            "OprType":"Interface",
+            "PhyType":"Material",
+            "Ranking":2
+        },
+        "Trace1":{
+            "DataLink":"PEC",
+            "GeoType":"Surface",
+            "OprType":"Interface",
+            "PhyType":"Material",
+            "Ranking":10000
+        }
+    },
+    "Simulation":{
+        "Frequency Control":{
+            "Points":[
+                700000000.0,
+                1400000000.0,
+                2100000000.0,
+                2800000000.0
+            ],
+            "Sweep":[
+                500000000.0,
+                4000000000.0,
+                100000000.0
+            ]
+        },
+        "Mesh Data":"C:/Test/Mesh.txt"
+    }
+}

@@ -1,9 +1,7 @@
 import socket
-import sys
 import time
 
-
-def recv_timeout(the_socket,timeout=0.1):
+def msg_recv_timeout(the_socket,timeout=0.1):
     #make socket non blocking
     the_socket.setblocking(0)
      
@@ -37,36 +35,3 @@ def recv_timeout(the_socket,timeout=0.1):
         
     #join all parts to make final string
     return b''.join(total_data).decode()
- 
-    
-    
-
-
-# Connect the socket to the port on the server given by the caller
-server_address = (sys.argv[1], 10075)
-print ( 'connecting to %s port %s' % server_address )
-
-while True:
-    try:
-        message = 'bye'
-        message = input('Type a message: ')
-        
-        # Create a TCP/IP socket
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.connect(server_address)
-        
-        if message == 'bye':
-            raise Exception ('Conversation is over !')
-        
-        print ( 'sending "%s"' % message )
-        sock.sendall(message.encode())
-        
-        returnmsg = str(recv_timeout(sock))
-        print ( 'received "%s"' % returnmsg)
-    
-    except Exception as v:
-        print(v)
-        break
-    
-    finally:
-        sock.close()
