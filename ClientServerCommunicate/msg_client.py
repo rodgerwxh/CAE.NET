@@ -1,9 +1,9 @@
 import socket
 import sys
-from msg_recv_timeout import msg_recv_timeout
+import s_msg as s
 
 # Connect the socket to the port on the server given by the caller
-server_address = (sys.argv[1], sys.argv[2])
+server_address = (sys.argv[1], 10075)
 print ( 'connecting to %s port %s' % server_address )
 
 while True:
@@ -11,17 +11,16 @@ while True:
         message = 'bye'
         message = input('Type a message: ')
         
-        # Create a TCP/IP socket
+        if message == 'bye':
+            raise Exception ('Conversation is over !')
+            
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect(server_address)
         
-        if message == 'bye':
-            raise Exception ('Conversation is over !')
-        
         print ( 'sending "%s"' % message )
-        sock.sendall(message.encode())
+        s.send(sock, message)
         
-        returnmsg = str(msg_recv_timeout(sock))
+        returnmsg = s.recv(sock)
         print ( 'received "%s"' % returnmsg)
     
     except Exception as v:

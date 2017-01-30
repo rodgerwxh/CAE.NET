@@ -1,22 +1,30 @@
 import socket
 import sys
+import s_file
+import s_msg
 
 server_address = (sys.argv[1], 10075)
-file_address = sys.argv[2]
 print ( 'Connecting to %s port %s' % server_address )
-print ( 'Transferring file: %s' %file_address )
+prjname = sys.argv[2]
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.connect(server_address)
-
-f = open (file_address, "rb")
-l = f.read(1024)
-
-while (l):
-    sock.send(l)
-    l = f.read(1024)
-
+    
+s_msg.send ( sock, prjname )
+    
+filename = prjname + ".config"
+f = open (filename, "wb")
+f.write(prjname.encode())
 f.close()
-sock.shutdown(socket.SHUT_WR)
+s_file.send (sock, filename)
+   
+filename = prjname + ".json"
+s_file.send (sock, filename)
+    
+filename = prjname + ".log"
+s_file.send (sock, filename)
+
+print ( 'Simulation completed successfully !' )
+
 sock.close()
-print ( 'File transfer complete !' )
+		

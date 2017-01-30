@@ -1,6 +1,8 @@
 import socket
 import sys
 import subprocess
+import s_file
+import s_msg
 
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -12,30 +14,27 @@ print ( 'Starting up on %s port %s' % server_address )
 sock.bind(server_address)
 sock.listen(10)
 
-i = 1
 while True:
 
     print ( 'Waiting for a connection' )
     connection, client_address = sock.accept()
     print ( 'Client connected:', client_address )
-
-    filename = 'file_'+ str(i)+".json"
-    f = open(filename,'wb') #open in binary
-    i=i+1
-
-    l = connection.recv(1024)
-    while (l):
-         f.write(l)
-         l = connection.recv(1024)
-    f.close()
     
-    f = open(filename,'r')
-    np = f.read()
-    subprocess.call("./test.sh &> log.txt", shell=True)
+    prjname = s_msg.recv (connection)
     
+    filename = prjname + ".config"
+    s_file.recv ( connection, filename )
     
+    filename = prjname + ".json"
+    s_file.recv ( connection, filename )
+        
+    filename = prjname + ".log"
+    command = "./test.sh &> " + filename
+    subprocess.call(command, shell=True)
+    print ( 'Engine calculation completed !' )
+    s_file.recv ( connection, filename )
+        
     connection.close()
-    print ( 'File transfer complete !' )
 
 sock.close()
 

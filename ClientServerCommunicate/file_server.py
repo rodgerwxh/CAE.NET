@@ -1,5 +1,6 @@
 import socket
 import sys
+import s_file as s
 
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -16,17 +17,10 @@ while True:
 
     print ( 'Waiting for a connection' )
     connection, client_address = sock.accept()
-    print ( 'Client connected:', client_address )
+    print ( 'Client connected: %s port %s' % client_address )
 
-    f = open('file_'+ str(i)+".json",'wb') #open in binary
+    filename = 'file_'+ str(i)+".json"
     i=i+1
-
-    l = connection.recv(1024)
-    while (l):
-         f.write(l)
-         l = connection.recv(1024)
-    f.close()
-    connection.close()
-    print ( 'File transfer complete !' )
+    s.recv ( connection, filename )
 
 sock.close()

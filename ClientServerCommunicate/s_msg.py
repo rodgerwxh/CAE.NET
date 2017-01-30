@@ -1,9 +1,13 @@
 import socket
 import time
 
-def msg_recv_timeout(the_socket,timeout=0.1):
+def send ( sock, msg ):
+    sock.sendall(msg.encode())
+
+def recv ( sock, timeout=0.1 ):
+        
     #make socket non blocking
-    the_socket.setblocking(0)
+    sock.setblocking(0)
      
     #total data partwise in an array
     total_data=[]
@@ -22,7 +26,7 @@ def msg_recv_timeout(the_socket,timeout=0.1):
          
         #recv something
         try:
-            data = the_socket.recv(8192)
+            data = sock.recv(8192)
             if data:
                 total_data.append(data)
                 #change the beginning time for measurement
@@ -32,6 +36,6 @@ def msg_recv_timeout(the_socket,timeout=0.1):
                 time.sleep(0.1*timeout)
         except:
             pass
-        
+    
     #join all parts to make final string
-    return b''.join(total_data).decode()
+    return str(b''.join(total_data).decode())
