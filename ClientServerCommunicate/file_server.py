@@ -22,5 +22,7 @@ while True:
     filename = 'file_'+ str(i)+".json"
     i=i+1
     s.recv ( connection, filename )
+    
+    connection.close()
 
 sock.close()

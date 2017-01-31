@@ -13,5 +13,7 @@ print ( 'Transferring file: %s' %file_address )
 
 s.send ( sock, file_address )
 
+sock.close()
+
 
 print ( 'File transfer complete !' )

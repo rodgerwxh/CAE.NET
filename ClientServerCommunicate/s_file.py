@@ -1,24 +1,26 @@
 import socket
 
-def send (server_address, filename):
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.connect(server_address)
+def send (sock, filename):
     f = open (filename, "rb")
-    l = f.read(1024)
-    while (l):
-        sock.send(l)
-        l = f.read(1024)
+    data = f.read()
+    l = len(data)
+    l_str = '%32d' % l
+    sock.sendall (l_str.encode())
+    sock.sendall(data)
     f.close()
-    sock.shutdown(socket.SHUT_WR)
-    print('File {} sent.'.format(filename) )
-    sock.close()
+    sock.recv(128)
+    print('File %s sent.' % filename )
     
 def recv (sock, filename):
     f = open(filename,'wb') #open in binary
-    l = sock.recv(1024)
-    while (l):
-        f.write(l)
-        l = sock.recv(1024)
+    l = int(sock.recv(32))
+    lc = 0
+    while l > lc:
+        data = sock.recv(1024)
+        if not data:
+            break
+        lc += len(data)
+        f.write(data)
     f.close()
+    sock.send('ok'.encode())
     print ( 'File %s received.' % filename )
-    sock.close()

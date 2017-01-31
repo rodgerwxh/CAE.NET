@@ -22,7 +22,7 @@ filename = prjname + ".json"
 s_file.send (sock, filename)
     
 filename = prjname + ".log"
-s_file.send (sock, filename)
+s_file.recv (sock, filename)
 
 print ( 'Simulation completed successfully !' )
 
