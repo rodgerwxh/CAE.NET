@@ -1,6 +1,6 @@
 import socket
 import sys
-import s_file as s
+import scom
 
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -19,9 +19,20 @@ while True:
     connection, client_address = sock.accept()
     print ( 'Client connected: %s port %s' % client_address )
 
-    filename = 'file_'+ str(i)+".json"
-    i=i+1
-    s.recv ( connection, filename )
+    filename = scom.recv_msg (connection)
+    scom.recv_file ( connection, filename )
+    scom.send_file ( connection, filename )
+    
+    filename = scom.recv_msg (connection)
+    scom.recv_file ( connection, filename )
+    scom.send_file ( connection, filename )
+    
+    filename = scom.recv_msg (connection)
+    scom.recv_file ( connection, filename )
+    scom.send_file ( connection, filename )
+    
+    filename = scom.recv_msg (connection)
+    scom.recv_file ( connection, filename )
     
     connection.close()
 
