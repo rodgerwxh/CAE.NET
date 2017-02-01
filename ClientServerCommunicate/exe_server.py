@@ -1,8 +1,7 @@
 import socket
 import sys
 import subprocess
-import s_file
-import s_msg
+import scom
 
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -18,21 +17,21 @@ while True:
 
     print ( 'Waiting for a connection' )
     connection, client_address = sock.accept()
-    print ( 'Client connected:', client_address )
+    print ( 'Client connected: %s port %s' % client_address )
     
-    prjname = s_msg.recv (connection)
+    prjname = scom.recv_msg(connection)
     
     filename = prjname + ".config"
-    s_file.recv ( connection, filename )
+    scom.recv_file ( connection, filename )
     
     filename = prjname + ".json"
-    s_file.recv ( connection, filename )
+    scom.recv_file ( connection, filename )
         
     filename = prjname + ".log"
     command = "./test.sh &> " + filename
     subprocess.call(command, shell=True)
     print ( 'Engine calculation completed !' )
-    s_file.recv ( connection, filename )
+    scom.send_file ( connection, filename )
         
     connection.close()
 
